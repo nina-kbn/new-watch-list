@@ -1,0 +1,22 @@
+<div class="container">
+
+  <h1><%= @car.name %></h1>
+
+  <div>
+    <p><%= @car.overview %></p>
+    <p><%= @car.price %></p>
+    <%= image_tag(@car.poster_url, alt: "") %>
+    <p><%= @car.rating %></p>
+  </div>
+
+  <button>
+    <%= link_to "Back", root_path  %>
+  </button>
+
+
+  <div>
+    <%= render 'resa_form' %>
+
+  </div>
+
+</div>

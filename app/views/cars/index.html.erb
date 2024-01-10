@@ -1,0 +1,17 @@
+<div class="container">
+
+  <h1>Toutes nos voitures</h1>
+
+  <div>
+    <% @cars.each do |car| %>
+      <%= link_to car_path(car) do %>
+        <p><%= car.name %></p>
+      <% end %>
+      <p><%= car.overview %></p>
+      <p><%= car.price %></p>
+      <%= image_tag(car.poster_url, alt: "") %>
+      <p><%= car.rating %></p>
+    <% end %>
+   </div>
+
+</div>

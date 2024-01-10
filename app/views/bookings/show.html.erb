@@ -1,0 +1,33 @@
+<div class="container">
+
+  <button>
+    <%= link_to "Back", root_path  %>
+  </button>
+
+  <h1>La réservation de <%= @booking.car.name %></h1>
+
+  <div>
+    <p><%= @booking.car.name %></p>
+    <p><%= @booking.car.overview %></p>
+    <p><%= @booking.car.price %></p>
+    <%= image_tag(@booking.car.poster_url, alt: "") %>
+    <p><%= @booking.car.rating %></p>
+    <p><%= @booking.begin_date %></p>
+    <p><%= @booking.end_date %></p>
+    <p><%= @booking.comment %></p>
+  </div>
+
+  <h2>Edit</h2>
+  <button>
+    <%= link_to "Edit", edit_booking_path  %>
+  </button>
+
+  <h2>Delete</h2>
+    <%= button_to "Delete", booking_path(@booking), method: :delete, data: { confirm: "Are you sure?" } %>
+  </button>
+
+
+
+
+
+</div>

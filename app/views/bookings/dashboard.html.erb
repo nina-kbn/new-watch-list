@@ -1,0 +1,19 @@
+<div class="container">
+
+  <h1>Mes réservations</h1>
+
+  <div>
+    <% @bookings.each do |booking| %>
+      <%= link_to booking_path(booking) do %>
+        <p><%= booking.car.name %></p>
+      <% end %>
+      <%= image_tag(booking.car.poster_url, alt: "") %>
+      <p><%= booking.comment %></p>
+      <p><%= booking.begin_date %></p>
+      <p><%= booking.end_date %></p>
+
+    <% end %>
+  </div>
+
+
+</div>
