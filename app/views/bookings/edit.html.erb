@@ -1,0 +1,26 @@
+<div class="container">
+
+  <h1>Edit</h1>
+
+  <button>
+    <%= link_to "Back", booking_path(@booking)  %>
+  </button>
+
+  <h1>La réservation de <%= @booking.car.name %></h1>
+
+  <div>
+    <p><%= @booking.car.name %></p>
+    <p><%= @booking.car.overview %></p>
+    <p><%= @booking.car.price %></p>
+    <%= image_tag(@booking.car.poster_url, alt: "") %>
+    <p><%= @booking.car.rating %></p>
+  </div>
+
+  <div>
+    <%= render 'resa_form' %>
+  </div>
+
+
+
+
+</div>
