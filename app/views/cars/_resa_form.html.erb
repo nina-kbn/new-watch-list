@@ -1,6 +1,6 @@
-  <%= simple_form_for [@car, @booking] do |f| %>
-      <%= f.input :comment %>
-      <%= f.input :begin_date, as: :date %>
-      <%= f.input :end_date, as: :date %>
-      <%= f.button :submit %>
-    <% end %>
+<%= simple_form_for [@car, @booking], data: { controller: 'datepicker', datepicker_dates_value: @disabled_dates } do |f| %>
+  <%= f.input :comment %>
+    <%= f.input :begin_date, as: :string, input_html: { data: { datepicker_target: "begin_at", action: "change->datepicker#send" } } %>
+    <%= f.input :end_date, as: :string, input_html: { data: { datepicker_target: "end_at" }} %>
+  <%= f.button :submit %>
+<% end %>

@@ -6,7 +6,6 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     if @booking.save!
       redirect_to root_path
-      flash[:notice] = "Your demand has been sent!"
     else
       render 'cars/show'
     end
