@@ -24,12 +24,30 @@ end
 
 puts 'Creating cars...'
 
+# Liste pour stocker les noms générés
+generated_names = []
+
 10.times do |_car|
   name = Faker::Vehicle.make
+
+  # Vérifier si le nom existe déjà dans la liste
+  while generated_names.include?(name)
+    name = Faker::Vehicle.make
+  end
+
+  # Ajouter le nom à la liste
+  generated_names << name
+
+  # Les autres attributs
   overview = Faker::Vehicle.standard_specs
   poster_url = "https://source.unsplash.com/random/?#{name}"
-  rating = rand(0..5)
-  Car.create!(name: name, overview: overview[0], poster_url: poster_url, rating: rating)
+  rating = rand(1..5)
+  price = rand(10..100)
+
+
+  # Créer l'objet Car avec le nom unique
+  Car.create!(name: name, overview: overview[0], poster_url: poster_url, rating: rating, price: price)
 end
+
 
 puts 'Finished!'
