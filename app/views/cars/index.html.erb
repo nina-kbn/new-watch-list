@@ -1,33 +1,25 @@
 <div class="container-fluid">
-  <div class="card border border-0">
-    <div class="container text-center grid gap-3">
-    <div class="col-md-1" style="width: 18.6em;">
-    <h1 style= "width: 9em;">Toutes nos voitures</h1>
-    </div>
-      <div class="row">
-        <% @cars.each do |car| %>
-          <div class="col-md-4">
-            <div class="card mb-4" style="width: 18rem;">
-              <%= image_tag(car.poster_url, alt: "", class: "card-img-top", style: "height: 16em;") %>
-              <div class="card-body">
-                <%= link_to car_path(car) do %>
-                  <p class="card-title"><%= car.name %></p>
-                <% end %>
-                <p class="card-text" style= "height: 7em;"><%= car.overview %></p>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item"><%= car.price %></li>
-                <li class="list-group-item"><%= car.rating %></li>
-              </ul>
-              <div class="card-body">
-                <% if car.id.present? %>
-                  <%= link_to "Réserver", car_path(car), class: "card-link" %>
-                <% end %>
-              </div>
-            </div>
+  <h1 style="width: 9em; margin-left: 1.1em" class="mb-3 mt-5">Toutes nos voitures</h1>
+  <div class="row">
+    <% @cars.each do |car| %>
+      <div class="col-4 p-2">
+        <div class="card mx-5 mb-5 $border-radius" style="box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; position: relative; overflow: hidden;">
+          <div style="position: relative;">
+            <%= image_tag(car.poster_url, alt: "", class: "card-img-top", style: "height: 20.5em; object-fit: cover; filter: brightness(65%);") %>
+            <p class="position-absolute bottom-0 end-0 m-3 text-light">Note : <%= car.rating %>/5</p>
           </div>
-        <% end %>
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <p class="card-title font-monospace fs-3 mb-0"><%= car.name %></p>
+              <p class="m-0"><%= car.price %>€/jour</p>
+            </div>
+              <p class="card-text" style="height: 3em;"><%= car.overview %></p>
+              <% if car.id.present? %>
+                <%= link_to "Louer moi", car_path(car), class: "btn btn-primary mb-3 w-100 font-monospace fs-4", style: "box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;" %>
+              <% end %>
+          </div>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
