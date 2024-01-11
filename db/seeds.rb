@@ -41,10 +41,12 @@ generated_names = []
   # Les autres attributs
   overview = Faker::Vehicle.standard_specs
   poster_url = "https://source.unsplash.com/random/?#{name}"
-  rating = rand(0..5)
+  rating = rand(1..5)
+  price = rand(10..100)
+
 
   # Créer l'objet Car avec le nom unique
-  Car.create!(name: name, overview: overview[0], poster_url: poster_url, rating: rating)
+  Car.create!(name: name, overview: overview[0], poster_url: poster_url, rating: rating, price: price)
 end
 
 

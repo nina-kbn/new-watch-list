@@ -1,17 +1,33 @@
-<div class="container">
-
-  <h1>Toutes nos voitures</h1>
-
-  <div>
-    <% @cars.each do |car| %>
-      <%= link_to car_path(car) do %>
-        <p><%= car.name %></p>
-      <% end %>
-      <p><%= car.overview %></p>
-      <p><%= car.price %></p>
-      <%= image_tag(car.poster_url, alt: "") %>
-      <p><%= car.rating %></p>
-    <% end %>
-   </div>
-
+<div class="container-fluid">
+  <div class="card border border-0">
+    <div class="container text-center grid gap-3">
+    <div class="col-md-1" style="width: 18.6em;">
+    <h1 style= "width: 9em;">Toutes nos voitures</h1>
+    </div>
+      <div class="row">
+        <% @cars.each do |car| %>
+          <div class="col-md-4">
+            <div class="card mb-4" style="width: 18rem;">
+              <%= image_tag(car.poster_url, alt: "", class: "card-img-top", style: "height: 16em;") %>
+              <div class="card-body">
+                <%= link_to car_path(car) do %>
+                  <p class="card-title"><%= car.name %></p>
+                <% end %>
+                <p class="card-text" style= "height: 7em;"><%= car.overview %></p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item"><%= car.price %></li>
+                <li class="list-group-item"><%= car.rating %></li>
+              </ul>
+              <div class="card-body">
+                <% if car.id.present? %>
+                  <%= link_to "Réserver", car_path(car), class: "card-link" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
