@@ -1,22 +1,28 @@
 <div class="container">
-
-  <h1><%= @car.name %></h1>
-
-  <div>
-    <p><%= @car.overview %></p>
-    <p><%= @car.price %></p>
-    <%= image_tag(@car.poster_url, alt: "") %>
-    <p><%= @car.rating %></p>
+  <%= link_to root_path, class: "btn btn-primary mb-3 w-10 font-monospace fs-5" do %>
+    <i class="fas fa-arrow-left"></i>
+  <% end %>
+  <div class="card mb-3" style="box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;">
+    <div class="row g-0">
+       <div class="col-md-4">
+          <div style="position: relative;">
+            <%= image_tag(@car.poster_url, alt: "", class: "img rounded-start w-100", style: "object-fit: cover; filter: brightness(65%); height: 41em") %>
+            <p class="position-absolute bottom-0 end-0 m-3 text-light">Note : <%= @car.rating %>/5</p>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="p-4">
+            <div class="d-flex justify-content-between">
+              <p class="card-title font-monospace fs-1 mb-0"><%= @car.name %></p>
+              <p class="card-text m-0 fs-5"><%= @car.price %> €/jour</p>
+            </div>
+            <p class="card-text fs-5 pt-3" style="height: 4em;"><%= @car.overview %></p>
+          </div>
+          <div class="card-footer m-4 p-4" style="border-radius: 16px; border: 1px; background: #848884; box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;">
+            <p class="font-monospace fs-3 mb-3">Louez moi :</p>
+            <%= render 'resa_form' %>
+          </div>
+        </div>
+    </div>
   </div>
-
-  <button>
-    <%= link_to "Back", root_path  %>
-  </button>
-
-
-  <div>
-    <%= render 'resa_form' %>
-
-  </div>
-
 </div>

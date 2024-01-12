@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
     @booking.car = @car
     @booking.user = current_user
     if @booking.save!
-      redirect_to root_path
+      redirect_to dashboard_path(@booking)
     else
       render 'cars/show'
     end
