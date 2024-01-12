@@ -8,7 +8,7 @@ class CarsController < ApplicationController
   def show
     @car = Car.find(params[:id])
     @booking = Booking.new
-    @disabled_dates = @car.bookings.flat_map { |booking| (booking.begin_date.to_date..booking.end_date.to_date).map { |date| date.strftime('%Y-%m-%d')
+    @disabled_dates = @car.bookings.flat_map { |booking| (booking.begin_date.to_date..booking.end_date.to_date).map { |date| date.strftime('%d-%m-%Y')
       }}
   end
 end
