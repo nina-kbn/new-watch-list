@@ -17,7 +17,7 @@ export default class extends Controller {
 
     flatpickr(this.begin_atTarget, {
       mode: "range",
-      dateFormat: "Y-m-d",
+      dateFormat: "d-m-Y",
       minDate: "today",
       disable: allDates
     })

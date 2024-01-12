@@ -1,6 +1,14 @@
-<%= simple_form_for [@car, @booking], data: { controller: 'datepicker', datepicker_dates_value: @disabled_dates } do |f| %>
-  <%= f.input :comment %>
-    <%= f.input :begin_date, as: :string, input_html: { data: { datepicker_target: "begin_at", action: "change->datepicker#send" } } %>
-    <%= f.input :end_date, as: :string, input_html: { data: { datepicker_target: "end_at" }} %>
-  <%= f.button :submit %>
-<% end %>
+<div>
+  <%= simple_form_for [@car, @booking], data: { controller: 'datepicker', datepicker_dates_value: @disabled_dates } do |f| %>
+    <div class="row g-3">
+      <div class="col-md-6">
+        <%= f.input :begin_date, label: "Date de début", as: :string, input_html: { data: { datepicker_target: "begin_at", action: "change->datepicker#send" }, class:"me-5" },  label_html: { class: "font-monospace fs-5" } %>
+      </div>
+      <div class="col-md-6">
+        <%= f.input :end_date, label: "Date de fin", as: :string, input_html: { data: { datepicker_target: "end_at" }}, label_html: { class: "font-monospace fs-5" } %>
+      </div>
+    </div>
+    <%= f.input :comment, label: "Message",  label_html: { class: "font-monospace fs-5" }%>
+    <%= f.button :submit %>
+  <% end %>
+</div>
