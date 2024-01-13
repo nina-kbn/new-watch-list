@@ -1,33 +1,41 @@
 <div class="container">
-
-  <button>
-    <%= link_to "Back", root_path  %>
-  </button>
-
-  <h1>La réservation de <%= @booking.car.name %></h1>
-
-  <div>
-    <p><%= @booking.car.name %></p>
-    <p><%= @booking.car.overview %></p>
-    <p><%= @booking.car.price %></p>
-    <%= image_tag(@booking.car.poster_url, alt: "") %>
-    <p><%= @booking.car.rating %></p>
-    <p><%= @booking.begin_date %></p>
-    <p><%= @booking.end_date %></p>
-    <p><%= @booking.comment %></p>
+  <%= link_to dashboard_path(@booking), class: "btn btn-primary mb-3 w-10 font-monospace fs-5" do %>
+    <i class="fas fa-arrow-left"></i>
+  <% end %>
+  <div class="card mb-3" style="box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <div style="position: relative;">
+          <%= image_tag(@booking.car.poster_url, alt: "", class: "img rounded-start w-100", style: "object-fit: cover; filter: brightness(65%); height: 41em") %>
+          <p class="position-absolute bottom-0 end-0 m-3 text-light">Note : <%= @booking.car.rating %>/5</p>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="p-4">
+          <div class="d-flex justify-content-between">
+            <p class="card-title font-monospace fs-1 mb-0"><%= @booking.car.name %></p>
+            <p class="card-text m-0 fs-5"><%= @booking.car.price %> €/jour</p>
+          </div>
+          <p class="card-text fs-5 pt-3" style="height: 4em; border-radius: 16px;"><%= @booking.car.overview %></p>
+        </div>
+        <div class="card-footer m-4 p-4" style="border-radius: 16px; border: 1px; background: #848884; box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;">
+          <p class="font-monospace fs-3 mb-3">Votre réservation du <%= @booking.begin_date.strftime('%d/%m/%y') %> au <%= @booking.end_date.strftime('%d/%m/%y') %> </p>
+          <p class="fs-5 mb-1">Votre message :</p>
+          <p class= "p-2 mb-0 bg-info" style= "height: 4em; border-radius: 16px;"><%= @booking.comment %></p>
+          <div class="row g-0">
+            <div class="col-md-6">
+              <div class="me-3 mt-4 mb-3">
+                <%= link_to "Modifier", edit_booking_path(@booking), class: "btn btn-primary w-100 font-monospace fs-4 ", style: "box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;" %>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="ms-3 mt-4 mb-3">
+                <%= link_to 'Supprimer', booking_path(@booking), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-primary w-100 font-monospace fs-4", style: "box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <h2>Edit</h2>
-  <button>
-    <%= link_to "Edit", edit_booking_path  %>
-  </button>
-
-  <h2>Delete</h2>
-    <%= button_to "Delete", booking_path(@booking), method: :delete, data: { confirm: "Are you sure?" } %>
-  </button>
-
-
-
-
-
 </div>

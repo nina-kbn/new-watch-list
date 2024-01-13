@@ -15,9 +15,6 @@ export default class extends Controller {
       dateFormat: "d-m-Y",
       minDate: "today",
       disable: allDates,
-      onChange: (selectedDates) => {
-        this.updateDateText(selectedDates);
-      },
     });
   }
 
@@ -30,18 +27,6 @@ export default class extends Controller {
     if (this.end_atTarget.value === "undefined") {
       this.end_atTarget.value = startDate;
     }
-
-    this.begin_atTarget.value = startDate;
   }
 
-  updateDateText(selectedDates) {
-    if (selectedDates.length === 2) {
-      const startDateStr = selectedDates[0].toLocaleDateString("fr-FR");
-      const endDateStr = selectedDates[1].toLocaleDateString("fr-FR");
-      const displayText = `du ${startDateStr} au ${endDateStr}`;
-
-      this.begin_atTarget.value = displayText;
-      this.end_atTarget.value = selectedDates[1].toISOString();
-    }
-  }
 }

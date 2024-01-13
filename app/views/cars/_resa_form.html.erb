@@ -4,13 +4,12 @@
       <p class="fs-5 mb-1">Votre message :</p>
       <%= f.input :comment, placeholder: "Je souhaite réserver à partir de...", label_html: { class: "d-none" } , input_html: { style: "font-style: italic;", class: "p-2" } %>
     </div>
-    <div>
       <p class="fs-5 mb-1">Vos dates :</p>
       <%= f.input :begin_date, as: :string ,placeholder: "Cliquez ici pour faire apparaitre le calendrier...", input_html: { data: { datepicker_target: "begin_at", action: "change->datepicker#send" }, class: "me-5 text-center", style: "height: 3.2em; font-style: italic;" }, label_html: { class: "d-none" } %>
+      <%= f.input :end_date, as: :string, input_html: { data: { datepicker_target: "end_at" }, class: "d-none" }, label_html: { class: "d-none" } %>
     </div>
     <div class="text-center"> <!-- Utilisation de la classe text-center pour centrer horizontalement -->
       <%= f.button :submit, "Je réserve !", class: "btn btn-primary mb-0 font-monospace fs-4 mt-4", style: "box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;" %>
     </div>
-    <%= f.input :end_date, as: :string, input_html: { data: { datepicker_target: "end_at" }, class: "d-none" }, label_html: { class: "d-none" } %>
   <% end %>
 </div>

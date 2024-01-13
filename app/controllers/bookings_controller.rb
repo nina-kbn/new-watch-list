@@ -21,6 +21,8 @@ class BookingsController < ApplicationController
 
   def edit
     @booking = Booking.find(params[:id])
+    @car = @booking.car
+    @disabled_dates = @car.bookings.flat_map { |booking| (booking.begin_date.to_date..booking.end_date.to_date).map { |date| date.strftime('%d-%m-%Y') } }
   end
 
   def update
