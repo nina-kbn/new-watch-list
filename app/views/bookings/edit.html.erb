@@ -1,32 +1,5 @@
 <div class="container">
-
-  <h1>Edit</h1>
-
-  <button>
-    <%= link_to "Back", booking_path(@booking)  %>
-  </button>
-
-  <h1>La réservation de <%= @booking.car.name %></h1>
-
-  <div>
-    <p><%= @booking.car.name %></p>
-    <p><%= @booking.car.overview %></p>
-    <p><%= @booking.car.price %></p>
-    <%= image_tag(@booking.car.poster_url, alt: "") %>
-    <p><%= @booking.car.rating %></p>
-  </div>
-
-  <div class="card-footer m-4 p-4" style="border-radius: 16px; border: 1px; background: #848884; box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;">
-    <p class="font-monospace fs-3 mb-3">Ma location du <%= @booking.begin_date.strftime("%d/%m/%Y") %> au <%= @booking.end_date.strftime("%d/%m/%Y") %></p>
-    <%= render 'resa_form' %>
-  </div>
-</div>
-
-
-
-
-<div class="container">
-  <%= link_to root_path, class: "btn btn-primary mb-3 w-10 font-monospace fs-5" do %>
+  <%= link_to booking_path(@booking), class: "btn btn-primary mb-3 w-10 font-monospace fs-5" do %>
     <i class="fas fa-arrow-left"></i>
   <% end %>
   <div class="card mb-3" style="box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;">
@@ -46,7 +19,7 @@
             <p class="card-text fs-5 pt-3" style="height: 4em;"><%= @car.overview %></p>
           </div>
           <div class="card-footer m-4 p-4" style="border-radius: 16px; border: 1px; background: #848884; box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;">
-            <p class="font-monospace fs-3 mb-3">Louez moi :</p>
+            <p class="font-monospace fs-3 mb-3">Modifier ma réservation :</p>
             <%= render 'resa_form' %>
           </div>
         </div>

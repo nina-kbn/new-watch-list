@@ -1,7 +1,7 @@
 <div class="container">
   <h1 style="width: 11.5em; margin-left: 1.1em" class="mb-4 mt-5 font-monospace">Mes réservations</h1>
   <div class="row">
-    <% @bookings.each do |booking| %>
+    <% @bookings.sort_by(&:begin_date).each do |booking| %>
       <div class="col-4 p-2">
         <div class="card mx-5 mb-5 $border-radius border border-primary" style="box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; position: relative; overflow: hidden;">
           <%= image_tag(booking.car.poster_url, alt: "", class: "card-img-top", style: "height: 20.5em; object-fit: cover; filter: brightness(65%);") %>
