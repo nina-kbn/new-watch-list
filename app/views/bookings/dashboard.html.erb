@@ -6,10 +6,12 @@
         <div class="card mx-5 mb-5 $border-radius border border-primary" style="box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; position: relative; overflow: hidden;">
           <%= image_tag(booking.car.poster_url, alt: "", class: "card-img-top", style: "height: 20.5em; object-fit: cover; filter: brightness(65%);") %>
           <div class="card-body">
-            <p class="card-title font-monospace fs-3 mb-0"><%= booking.car.name %></p>
-            <p class="card-text">Louée du <%= booking.begin_date.strftime("%d/%m/%Y") %> au <%= booking.end_date.strftime("%d/%m/%Y") %></p>
+          <%= link_to booking_path(booking) do %>
+            <p class="card-title font-monospace fs-2 mb-0"><%= booking.car.name %></p>
+          <% end %>
+            <p class="card-text fs-4">Louée du <%= booking.begin_date.strftime("%d/%m/%Y") %> au <%= booking.end_date.strftime("%d/%m/%Y") %></p>
             <% if booking.car.id.present? %>
-              <%= link_to "Editer", edit_booking_path(booking), class: "btn btn-primary mb-3 mt-3 w-100 font-monospace fs-4", style: "box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;" %>
+              <%= link_to "Modifier", edit_booking_path(booking), class: "btn btn-primary mb-3 mt-3 w-100 font-monospace fs-4", style: "box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;" %>
               <%= link_to 'Supprimer', booking_path(booking), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-primary mb-3 mt-3 w-100 font-monospace fs-4", style: "box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;" %>
             <% end %>
           </div>
